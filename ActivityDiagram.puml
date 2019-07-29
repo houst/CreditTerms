@@ -1,0 +1,25 @@
+@startuml
+start
+while (Show menu and\nget user choice\nfrom keyboard)
+if (Choice 1:\nget all credits) then (yes)
+	:Output all viable credits;
+elseif (Choice 2:\nsearch credit by criteria) then (yes)
+	:Input target;
+	:Input term;
+	:Input sum;
+	:With early repayment?;
+	:Show result;
+elseif (Choice 3:\nChoose optimal credit) then (yes)
+	:Input target;
+	:Input term;
+	:Input sum;
+	:With early repayment?;
+	:Show optimal credit terms;
+elseif (Choice 4:\nexit) then (yes)
+	stop
+else
+	:Undefined menu option;
+endif
+endwhile
+stop
+@enduml

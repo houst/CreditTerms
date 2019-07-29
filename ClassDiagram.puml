@@ -1,0 +1,17 @@
+@startuml
+skinparam classAttributeIconSize 0
+enum CreditTarget {
+	MORTGAGE
+	LEASE
+	CONSUMER
+	BUSINESS
+}
+class Credit {
+	-bankName : String
+	-target : CreditTarget
+	-rate : BigDecimal
+	-termInMonths : int
+	-maxSum : BigDecimal
+	-isEarlyRepayment : boolean
+}
+@enduml
