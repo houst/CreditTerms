@@ -3,16 +3,16 @@ package ua.training.credits.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import ua.training.credits.entity.Credit;
 import ua.training.credits.entity.Credits;
-import ua.training.credits.model.CreditTerms;
 import ua.training.credits.view.ConsoleView;
 import ua.training.credits.view.TextConstant;
 
-public class CreditTermsController {
+public class CreditController {
 	
 	private ConsoleView consoleView;
 	
-	public CreditTermsController(ConsoleView consoleView) {
+	public CreditController(ConsoleView consoleView) {
 		this.consoleView = consoleView;
 	}
 	
@@ -20,8 +20,8 @@ public class CreditTermsController {
 	 * Get all credits from enumerator
 	 * @return
 	 */
-	public List<CreditTerms> getAllCreditsTerms() {
-		List<CreditTerms> creditsTerms = new ArrayList<>();
+	public List<Credit> getAllCreditsTerms() {
+		List<Credit> creditsTerms = new ArrayList<>();
 		
 		for (Credits c : Credits.values()) {
 			creditsTerms.add(c.getCreditTerms());
@@ -35,8 +35,8 @@ public class CreditTermsController {
 	 * @param credits
 	 * @return
 	 */
-	public List<CreditTerms> getCreditsTermsByPurposeAndTerm(List<CreditTerms> credits) {
-		CreditTerms.Purpose purposeCriteria = inputCreditPurposeWithScanner();
+	public List<Credit> getCreditsTermsByPurposeAndTerm(List<Credit> credits) {
+		Credit.Purpose purposeCriteria = inputCreditPurposeWithScanner();
 		int termCriteria = inputCreditTermWithScanner(credits);
 		
 		return getCreditsTermsByCriteria(credits, purposeCriteria, termCriteria);
@@ -49,17 +49,17 @@ public class CreditTermsController {
 	 * @param termCriteria
 	 * @return
 	 */
-	public List<CreditTerms> getCreditsTermsByCriteria(List<CreditTerms> credits, 
-			CreditTerms.Purpose purposeCriteria,
+	public List<Credit> getCreditsTermsByCriteria(List<Credit> credits, 
+			Credit.Purpose purposeCriteria,
 			int termCriteria) {
 		
-		List<CreditTerms> res = new ArrayList<>();
+		List<Credit> res = new ArrayList<>();
 		
 		if (credits == null) {
 			return res;
 		}
 		
-		for (CreditTerms credit : credits) {
+		for (Credit credit : credits) {
 			if (credit.getPurpose().equals(purposeCriteria) && 
 					credit.getTermInMonths() == termCriteria) {
 				res.add(credit);
@@ -73,9 +73,9 @@ public class CreditTermsController {
 	 * This method gives user information about credit purposes and then gets his choice
 	 * @return
 	 */
-	private CreditTerms.Purpose inputCreditPurposeWithScanner() {
+	private Credit.Purpose inputCreditPurposeWithScanner() {
 		
-		CreditTerms.Purpose[] purposes = CreditTerms.Purpose.values();
+		Credit.Purpose[] purposes = Credit.Purpose.values();
 		
 		for (int i = 0; i < purposes.length; i++) {
 			consoleView.printMessage(i + " - " + purposes[i]);
@@ -92,11 +92,11 @@ public class CreditTermsController {
 	 * This method gives user information about credit terms in mouths and then gets his choice
 	 * @return
 	 */
-	private int inputCreditTermWithScanner(List<CreditTerms> credits) {
+	private int inputCreditTermWithScanner(List<Credit> credits) {
 		
 		List<Integer> terms = new ArrayList<>();
 		
-		for (CreditTerms credit : credits) {
+		for (Credit credit : credits) {
 			int term = credit.getTermInMonths();
 			
 			if (!terms.contains(term)) {

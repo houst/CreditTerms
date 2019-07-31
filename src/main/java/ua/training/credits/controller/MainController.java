@@ -2,7 +2,7 @@ package ua.training.credits.controller;
 
 import java.util.List;
 
-import ua.training.credits.model.CreditTerms;
+import ua.training.credits.entity.Credit;
 import ua.training.credits.view.ConsoleView;
 import ua.training.credits.view.TextConstant;
 
@@ -15,8 +15,8 @@ public class MainController {
 	}
 	
 	public void process() {
-		CreditTermsController creditTermsController = new CreditTermsController(consoleView);
-		List<CreditTerms> credits = creditTermsController.getAllCreditsTerms();
+		CreditController creditTermsController = new CreditController(consoleView);
+		List<Credit> credits = creditTermsController.getAllCreditsTerms();
 		
 		UtillityController utillityController = new UtillityController(consoleView);
 		
@@ -26,14 +26,14 @@ public class MainController {
 		
 		// All credits
 		if (chosen == 1) {
-			for (CreditTerms credit : credits) {
+			for (Credit credit : credits) {
 				consoleView.printCreditTerms(credit);
 			}
 		}
 		
 		// Credits by criteria
 		if (chosen == 2) {
-			for (CreditTerms credit : creditTermsController.getCreditsTermsByPurposeAndTerm(credits)) {
+			for (Credit credit : creditTermsController.getCreditsTermsByPurposeAndTerm(credits)) {
 				consoleView.printCreditTerms(credit);
 			}
 		}

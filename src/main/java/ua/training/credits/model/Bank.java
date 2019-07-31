@@ -3,11 +3,13 @@ package ua.training.credits.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import ua.training.credits.entity.Credit;
+
 public class Bank {
 	
 	private String name;
 	
-	private List<CreditTerms> creditsTermsList = new ArrayList<>();
+	private List<Credit> creditsTermsList = new ArrayList<>();
 
 	public Bank() {}
 	
@@ -15,7 +17,7 @@ public class Bank {
 		this.name = name;
 	}
 	
-	public Bank(String name, List<CreditTerms> creditsTermsList) {
+	public Bank(String name, List<Credit> creditsTermsList) {
 		this.name = name;
 		this.creditsTermsList = creditsTermsList;
 	}
@@ -28,11 +30,11 @@ public class Bank {
 		this.name = name;
 	}
 
-	public List<CreditTerms> getCreditsTermsList() {
+	public List<Credit> getCreditsTermsList() {
 		return creditsTermsList;
 	}
 
-	public void setCreditsTermsList(List<CreditTerms> creditsTermsList) {
+	public void setCreditsTermsList(List<Credit> creditsTermsList) {
 		this.creditsTermsList = creditsTermsList;
 	}
 	
@@ -40,7 +42,7 @@ public class Bank {
 	 * Adds credit terms to collection of current bank credit terms list
 	 * @param creditTerms
 	 */
-	public void addCreditTerms(CreditTerms creditTerms) {
+	public void addCreditTerms(Credit creditTerms) {
 		creditsTermsList.add(creditTerms);
 	}
 	

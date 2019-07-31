@@ -5,7 +5,7 @@ import static ua.training.credits.view.TextConstant.*;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import ua.training.credits.model.CreditTerms;
+import ua.training.credits.entity.Credit;
 
 public class ConsoleView {
 	
@@ -44,7 +44,7 @@ public class ConsoleView {
                 bundle.getString(COLON)));
     }
 	
-	public void printCreditTerms(CreditTerms credit) {
+	public void printCreditTerms(Credit credit) {
 		printMessage(concatenateStrings(
 				bundle.getString(CREDIT_BANK_NAME), bundle.getString(COLON), credit.getBank().getName(), 
 				bundle.getString(SEPARATOR),
@@ -54,13 +54,7 @@ public class ConsoleView {
 				bundle.getString(SEPARATOR),
 				bundle.getString(CREDIT_TERM_IN_MONTHS), bundle.getString(COLON), Integer.toString(credit.getTermInMonths()), 
 				bundle.getString(SEPARATOR),
-				bundle.getString(CREDIT_MAXSUM), bundle.getString(COLON), credit.getMaxSum().toString(), 
-				bundle.getString(SEPARATOR),
-				bundle.getString(CREDIT_ISEARLYREPAYABLE), bundle.getString(COLON), 
-				credit.isEarlyRepayable() ? bundle.getString(OUTPUT_YES) : bundle.getString(OUTPUT_NO), 
-				bundle.getString(SEPARATOR),
-				bundle.getString(CREDIT_ISCREDITLINEINCREASABLE), bundle.getString(COLON), 
-				credit.isCreditLineIncreasable() ? bundle.getString(OUTPUT_YES) : bundle.getString(OUTPUT_NO)));
+				bundle.getString(CREDIT_MAXSUM), bundle.getString(COLON), credit.getMaxSum().toString()));
 	}
 	
 	public void showMenu() {

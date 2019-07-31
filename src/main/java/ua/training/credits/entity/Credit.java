@@ -1,13 +1,15 @@
-package ua.training.credits.model;
+package ua.training.credits.entity;
 
 import java.math.BigDecimal;
+
+import ua.training.credits.model.Bank;
 
 /**
  * This type represents terms of purpose credits which issued by different banks.
  * @author oleglitvinenko
  *
  */
-public class CreditTerms {
+public class Credit {
 	
 	private Bank bank;
 
@@ -19,26 +21,18 @@ public class CreditTerms {
 	
 	private BigDecimal maxSum;
 	
-	private boolean isEarlyRepayable;
+	public Credit() {}
 	
-	private boolean isCreditLineIncreasable;
-	
-	public CreditTerms() {}
-	
-	public CreditTerms(Bank bank, 
+	public Credit(Bank bank, 
 			Purpose purpose, 
 			BigDecimal rate, 
 			int termInMonths, 
-			BigDecimal maxSum, 
-			boolean isEarlyRepayable, 
-			boolean isCreditLineIncreasable) {
+			BigDecimal maxSum) {
 		this.bank = bank;
 		this.purpose = purpose;
 		this.rate = rate;
 		this.termInMonths = termInMonths;
 		this.maxSum = maxSum;
-		this.isEarlyRepayable = isEarlyRepayable;
-		this.isCreditLineIncreasable = isCreditLineIncreasable;
 	}
 
 	public Bank getBank() {
@@ -80,29 +74,11 @@ public class CreditTerms {
 	public void setMaxSum(BigDecimal maxSum) {
 		this.maxSum = maxSum;
 	}
-
-	public boolean isEarlyRepayable() {
-		return isEarlyRepayable;
-	}
-
-	public void setEarlyRepayable(boolean isEarlyRepayable) {
-		this.isEarlyRepayable = isEarlyRepayable;
-	}
-
-	public boolean isCreditLineIncreasable() {
-		return isCreditLineIncreasable;
-	}
-
-	public void setCreditLineIncreasable(boolean isCreditLineIncreasable) {
-		this.isCreditLineIncreasable = isCreditLineIncreasable;
-	}
 	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (isCreditLineIncreasable ? 1231 : 1237);
-		result = prime * result + (isEarlyRepayable ? 1231 : 1237);
 		result = prime * result + ((maxSum == null) ? 0 : maxSum.hashCode());
 		result = prime * result + ((rate == null) ? 0 : rate.hashCode());
 		result = prime * result + ((purpose == null) ? 0 : purpose.hashCode());
@@ -118,11 +94,7 @@ public class CreditTerms {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		CreditTerms other = (CreditTerms) obj;
-		if (isCreditLineIncreasable != other.isCreditLineIncreasable)
-			return false;
-		if (isEarlyRepayable != other.isEarlyRepayable)
-			return false;
+		Credit other = (Credit) obj;
 		if (maxSum == null) {
 			if (other.maxSum != null)
 				return false;
